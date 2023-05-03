@@ -27,14 +27,20 @@ The analysis consists of the following sections:
 ## Findings 
 
 1. **Usage trend** 
-Number of trips by months in 2016 & 2017 
 
+a. Number of trips by year 
+````sql 
 SELECT 
 	YEAR(start_date),
     COUNT(*) AS no_trips
 FROM trips
 GROUP BY YEAR(start_date); 
+````
 
+b. Number of trips by months in 2016 & 2017 
+
+
+````sql 
 -- The number of trips for the year of 2016 broken down by month 
 SELECT 
     MONTH(start_date) AS start_month,
@@ -43,8 +49,21 @@ FROM trips
 WHERE YEAR(start_date) = 2016
 GROUP BY start_month; -- Add GROUP BY command to show the year to the result 
 
+
+--  The number of trips for the year of 2017 broken down by month 
+SELECT 
+    MONTH(start_date) AS start_month,
+    COUNT(*) AS no_trips
+FROM trips
+WHERE YEAR(end_date) = 2017
+GROUP BY start_month; -- Add GROUP BY command to show the year to the result 
+````
+
+
 ## Contributing
 
 Feel free to contribute to this project by submitting a pull request or opening an issue. All contributions are welcome.
+
+
 
 
