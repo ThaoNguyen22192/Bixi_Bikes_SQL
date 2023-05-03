@@ -19,24 +19,32 @@ To run the SQL queries in this analysis, you will need:
 
 The analysis consists of the following sections:
 
-1. **Data Preparation**: Import the Bixi Bikes dataset into your SQL client or database management system.
+1. **Data Preparation**: Import the Bixi Bikes dataset into your SQL database management system.
 2. **Usage Trends**: Explore the usage trends by time (hour, day, month, and year).
 3. **Popular Stations and Routes**: Identify the most popular stations and routes based on the number of trips.
-4. **User Demographics**: Analyze the demographics of Bixi Bikes users (age, gender, and user type).
+4. **Customer segment**: Analyze the usage behaviour by customer segments (members and non-members) 
 
-![Usage Trends](https://raw.githubusercontent.com/username/bixi-bikes-analysis/main/images/usage_trends.png)
+## Findings 
 
-## How to Use
+1. **Usage trend** 
+Number of trips by months in 2016 & 2017 
 
-1. Clone the repository.
-2. Import the Bixi Bikes dataset into your SQL client or database management system.
-3. Run the SQL queries provided in the `sql` folder to perform the analysis. The queries are organized by analysis sections (usage trends, popular stations and routes, and user demographics).
+SELECT 
+	YEAR(start_date),
+    COUNT(*) AS no_trips
+FROM trips
+GROUP BY YEAR(start_date); 
+
+-- The number of trips for the year of 2016 broken down by month 
+SELECT 
+    MONTH(start_date) AS start_month,
+    COUNT(*) AS no_trips
+FROM trips
+WHERE YEAR(start_date) = 2016
+GROUP BY start_month; -- Add GROUP BY command to show the year to the result 
 
 ## Contributing
 
 Feel free to contribute to this project by submitting a pull request or opening an issue. All contributions are welcome.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/username/bixi
 
